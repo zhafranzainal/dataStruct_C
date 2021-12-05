@@ -1,2 +1,2 @@
 # dataStruct_C
-Topics covered include structure and linked list.
+Topics covered include recursion, structure, linked list and stack.
