@@ -45,14 +45,14 @@ int main(void){
         switch(userChoice){
         case 'A': enqueue();
                   break;
-		case 'B': dequeue();
+        case 'B': dequeue();
                   break;
-		case 'D': list_node();
+        case 'D': list_node();
                   break;
-		case 'X': userExit=FALSE;
+        case 'X': userExit=FALSE;
                   break;
 
-		default: system("cls");
+        default: system("cls");
                  printf("Choose only one of the options!\n");}}
 
     getch();
