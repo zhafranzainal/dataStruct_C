@@ -63,8 +63,8 @@ void search_binary(int element[MAX], int totalElement, int searchValue){
 
             if(searchValue<element[elemMid]){
                 elemLast=elemMid-1;}
-			else{
-				elemFirst=elemMid+1;}}
+            else{
+                elemFirst=elemMid+1;}}
 	}
 
     printf("\n\nNo match found!");
