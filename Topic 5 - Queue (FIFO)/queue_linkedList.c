@@ -24,26 +24,26 @@ void list_node();
 
 int main(void){
 
-	char userChoice;
-	int userExit=TRUE;
+    char userChoice;
+    int userExit=TRUE;
 
-	front=NULL;
+    front=NULL;
 
-	while(userExit==TRUE){
+    while(userExit==TRUE){
 
         printf("\n[-----------Queue Menu-----------]");
-		printf("\nA - Enqueue queue");
-		printf("\nB - Dequeue queue");
-		printf("\nD - Display queue content");
-		printf("\nX - Exit\n");
+        printf("\nA - Enqueue queue");
+        printf("\nB - Dequeue queue");
+        printf("\nD - Display queue content");
+        printf("\nX - Exit\n");
 
-		printf("\nEnter choice: ");
-		scanf(" %c", &userChoice);
+        printf("\nEnter choice: ");
+        scanf(" %c", &userChoice);
 
-		userChoice=toupper(userChoice);
+        userChoice=toupper(userChoice);
 
-		switch(userChoice){
-		case 'A': enqueue();
+        switch(userChoice){
+        case 'A': enqueue();
                   break;
 		case 'B': dequeue();
                   break;
