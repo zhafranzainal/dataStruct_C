@@ -47,7 +47,7 @@ void search_binary(int element[MAX], int totalElement, int searchValue){
 
     int elemFirst=0, elemLast=totalElement-1, elemMid, loop=0;
 
-	while(elemFirst<=elemLast){
+    while(elemFirst<=elemLast){
 
         ++loop;
 
