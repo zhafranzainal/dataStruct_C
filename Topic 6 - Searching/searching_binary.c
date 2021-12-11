@@ -59,7 +59,7 @@ void search_binary(int element[MAX], int totalElement, int searchValue){
             printf("\nNumber of comparison is %d", loop);
             return;}
 
-		else{
+        else{
 
             if(searchValue<element[elemMid]){
                 elemLast=elemMid-1;}
