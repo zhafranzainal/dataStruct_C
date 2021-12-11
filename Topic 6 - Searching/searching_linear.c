@@ -42,7 +42,7 @@ int main(void){
     ptrNew->element=23;
     read_number();
 
-	do{
+    do{
         printf("l - List all numbers");
         printf("\nd - Search a number");
         printf("\nx - Exit");
