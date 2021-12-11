@@ -13,7 +13,7 @@ struct Node{
     int element;
 
     //Pointer (Link) Field
-	struct Node *ptrNext;};
+    struct Node *ptrNext;};
 
 struct Node *front, *rear, *ptrNew, *ptrCurrent;
 
