@@ -21,9 +21,9 @@ int main(void){
     for(loop1=0;loop1<totalElement;loop1++){
         for(loopNext=loop1+1; loopNext<totalElement; loopNext++){
             if(element[loop1]>element[loopNext]){
-				temp=element[loop1];
-				element[loop1]=element[loopNext];
-				element[loopNext]=temp;}}}
+                temp=element[loop1];
+                element[loop1]=element[loopNext];
+                element[loopNext]=temp;}}}
 
     printf("\nEnter key value for binary search: ");
     scanf(" %d", &searchValue);
