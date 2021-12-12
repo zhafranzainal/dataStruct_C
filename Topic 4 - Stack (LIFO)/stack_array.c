@@ -16,7 +16,7 @@ int main(void){
     int userChoice, number, top=-1;
 
     do{
-		printf("\n-------------------Stack Menu-------------------");
+        printf("\n-------------------Stack Menu-------------------");
         printf("\nEnter 1 to insert an element into the stack");
         printf("\nEnter 2 to delete an element from the stack");
         printf("\nEnter 3 to check whether an element is palindrome");
