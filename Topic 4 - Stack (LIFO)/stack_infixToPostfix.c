@@ -86,8 +86,8 @@ void infixToPostfix(char infix_exp[], char postfix_exp[]){
             //push current operator symbol onto stack
             push(item);}
 
-		//if current symbol is ')'
-		else if(item==')'){
+        //if current symbol is ')'
+        else if(item==')'){
 
             x = pop();
 
