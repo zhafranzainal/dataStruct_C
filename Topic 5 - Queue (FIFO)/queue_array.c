@@ -63,10 +63,10 @@ void enqueue(){
         printf("Queue OVERFLOW - can't insert into queue!\n");
         return;}
 
-	else{
-		rear=(rear+1)%MAX_QUEUE;
-		count++;
-		queue[rear]=element;}
+    else{
+        rear=(rear+1)%MAX_QUEUE;
+        count++;
+        queue[rear]=element;}
 
    display();
 }
