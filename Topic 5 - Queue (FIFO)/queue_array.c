@@ -17,24 +17,24 @@ int main(void){
 
     do{
         printf("\nFront value   : %d", front);
-	    printf("\nRear value    : %d", rear);
-	    printf("\nCount value   : %d", count);
+        printf("\nRear value    : %d", rear);
+        printf("\nCount value   : %d", count);
 
         printf("\n\n[-----------Queue Menu-----------]");
-		printf("\nA - Enqueue queue");
-		printf("\nB - Dequeue queue");
-		printf("\nD - Display queue content");
-		printf("\nX - Exit\n");
+        printf("\nA - Enqueue queue");
+        printf("\nB - Dequeue queue");
+        printf("\nD - Display queue content");
+        printf("\nX - Exit\n");
 
-		printf("\nEnter choice: ");
-		scanf(" %c", &userChoice);
+        printf("\nEnter choice: ");
+        scanf(" %c", &userChoice);
 
-		userChoice=toupper(userChoice);
+        userChoice=toupper(userChoice);
 
-		switch(userChoice){
+        switch(userChoice){
 
-		case 'A': enqueue();
-				  break;
+        case 'A': enqueue();
+                  break;
 
 		case 'B': dequeue();
 				  break;
