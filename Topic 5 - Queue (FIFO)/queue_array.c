@@ -36,15 +36,15 @@ int main(void){
         case 'A': enqueue();
                   break;
 
-		case 'B': dequeue();
-				  break;
+        case 'B': dequeue();
+                  break;
 
-		case 'D': display();
-				  break;
+        case 'D': display();
+                  break;
 
-		case 'X': break;
+        case 'X': break;
 
-		default: system("cls");
+        default: system("cls");
                  printf("Choose only one of the options!\n");}
 
     }while(userChoice!='X');
