@@ -58,7 +58,7 @@ void enqueue(){
     printf("\nEnter an element: ");
     scanf(" %d", &element);
 
-	if(count==MAX_QUEUE){
+    if(count==MAX_QUEUE){
         system("cls");
         printf("Queue OVERFLOW - can't insert into queue!\n");
         return;}
