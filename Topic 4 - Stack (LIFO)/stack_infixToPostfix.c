@@ -106,7 +106,7 @@ void infixToPostfix(char infix_exp[], char postfix_exp[]){
         loopInfix++;
 
         item = infix_exp[loopInfix];
-	}
+    }
 
 	if(top>0){
         printf("\nInvalid infix expression.\n");
