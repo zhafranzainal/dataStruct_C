@@ -74,17 +74,17 @@ void infixToPostfix(char infix_exp[], char postfix_exp[]){
 
             while(isOperator(x)==1 && precedence(x)>=precedence(item)){
 
-				//pop all higher precedence operator
-				postfix_exp[loopPostfix]=x;
-				loopPostfix++;
+                //pop all higher precedence operator
+                postfix_exp[loopPostfix]=x;
+                loopPostfix++;
 
-				//add them to postfix expression
-				x = pop();}
+                //add them to postfix expression
+                x = pop();}
 
-			push(x);
+            push(x);
 
-			//push current operator symbol onto stack
-			push(item);}
+            //push current operator symbol onto stack
+            push(item);}
 
 		//if current symbol is ')'
 		else if(item==')'){
