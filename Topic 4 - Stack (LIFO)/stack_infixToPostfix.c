@@ -89,7 +89,7 @@ void infixToPostfix(char infix_exp[], char postfix_exp[]){
 		//if current symbol is ')'
 		else if(item==')'){
 
-			x = pop();
+            x = pop();
 
 			while(x!='('){
 
