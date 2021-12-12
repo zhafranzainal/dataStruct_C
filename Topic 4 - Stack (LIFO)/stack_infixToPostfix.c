@@ -119,11 +119,11 @@ void infixToPostfix(char infix_exp[], char postfix_exp[]){
 //Function Definition: push operation
 void push(char item){
 
-	if(top>=SIZE-1){
-		printf("\nStack Overflow.");}
-	else{
-		top+=1;
-		stack[top]=item;}
+    if(top>=SIZE-1){
+        printf("\nStack Overflow.");}
+    else{
+        top+=1;
+        stack[top]=item;}
 }
 
 //Function Definition: determine whether a symbol is an operator or an operand
