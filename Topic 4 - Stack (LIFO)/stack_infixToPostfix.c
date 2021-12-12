@@ -97,23 +97,23 @@ void infixToPostfix(char infix_exp[], char postfix_exp[]){
                 loopPostfix++;
                 x = pop();}}
 
-		//if current symbol is neither operand nor '()' and nor operator
-		else{
-			printf("\nInvalid infix expression.\n");
-			getchar();
-			exit(1);}
+        //if current symbol is neither operand nor '()' and nor operator
+        else{
+            printf("\nInvalid infix expression.\n");
+            getchar();
+            exit(1);}
 
-		loopInfix++;
+        loopInfix++;
 
-		item = infix_exp[loopInfix];
+        item = infix_exp[loopInfix];
 	}
 
 	if(top>0){
-		printf("\nInvalid infix expression.\n");
-		getchar();
-		exit(1);}
+        printf("\nInvalid infix expression.\n");
+        getchar();
+        exit(1);}
 
-	postfix_exp[loopPostfix]='\0';
+    postfix_exp[loopPostfix]='\0';
 }
 
 //Function Definition: push operation
