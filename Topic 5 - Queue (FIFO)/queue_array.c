@@ -94,10 +94,10 @@ void display(){
 
     int loopFront=front, loopCount=count;
 
-	if(count==0){
+    if(count==0){
         printf("Empty queue.\n");}
 
-	else{
+    else{
         while(loopCount!=0){
             printf("%d", queue[loopFront]);
             printf("\n");
