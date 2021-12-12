@@ -76,13 +76,13 @@ void dequeue(){
 
     system("cls");
 
-	if(count==0){
+    if(count==0){
         printf("Queue UNDERFLOW - can't delete queue!\n");
         return;}
 
-	else{
-		front=(front+1)%MAX_QUEUE;
-		count--;}
+    else{
+        front=(front+1)%MAX_QUEUE;
+        count--;}
 
     display();
 }
