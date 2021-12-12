@@ -24,18 +24,18 @@ int main(void){
 
     char infix[SIZE], postfix[SIZE];
 
-	printf("ASSUMPTION: The infix expression contains single letter variables and single digit constants only.");
+    printf("ASSUMPTION: The infix expression contains single letter variables and single digit constants only.");
 
-	printf("\n\nEnter a valid infix expression\n");
-	gets(infix);
+    printf("\n\nEnter a valid infix expression\n");
+    gets(infix);
 
     printf("\nThe infix expression      : %s", infix);
 
-	infixToPostfix(infix, postfix);
+    infixToPostfix(infix, postfix);
 
-	printf("\nThe postfix expression    : %s", postfix);
+    printf("\nThe postfix expression    : %s", postfix);
 
-	printf("\n");
+    printf("\n");
 
 return 0;
 }
