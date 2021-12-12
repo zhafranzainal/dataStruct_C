@@ -43,24 +43,24 @@ return 0;
 //Function Definition: convert infix to postfix expression
 void infixToPostfix(char infix_exp[], char postfix_exp[]){
 
-	int loopInfix=0, loopPostfix=0;
-	char item, x;
+    int loopInfix=0, loopPostfix=0;
+    char item, x;
 
     //push '(' to stack
-	push('(');
+    push('(');
 
-	//add ')' to infix expression
-	strcat(infix_exp, ")");
+    //add ')' to infix expression
+    strcat(infix_exp, ")");
 
     //initialize before loop
-	item=infix_exp[loopInfix];
+    item=infix_exp[loopInfix];
 
     //run loop till end of infix expression
-	while(item!='\0'){
+    while(item!='\0'){
 
         //if symbol is '('
         if(item=='('){
-			push(item);}
+           push(item);}
 
 		else if(isdigit(item) || isalpha(item)){
 			//add operand symbol to postfix expression
