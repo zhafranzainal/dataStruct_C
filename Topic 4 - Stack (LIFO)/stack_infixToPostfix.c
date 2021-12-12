@@ -62,17 +62,17 @@ void infixToPostfix(char infix_exp[], char postfix_exp[]){
         if(item=='('){
            push(item);}
 
-		else if(isdigit(item) || isalpha(item)){
-			//add operand symbol to postfix expression
-			postfix_exp[loopPostfix]=item;
-			loopPostfix++;}
+        else if(isdigit(item) || isalpha(item)){
+            //add operand symbol to postfix expression
+            postfix_exp[loopPostfix]=item;
+            loopPostfix++;}
 
         //if symbol is operator
-		else if(isOperator(item)==1){
+        else if(isOperator(item)==1){
 
-			x=pop();
+            x=pop();
 
-			while(isOperator(x)==1 && precedence(x)>=precedence(item)){
+            while(isOperator(x)==1 && precedence(x)>=precedence(item)){
 
 				//pop all higher precedence operator
 				postfix_exp[loopPostfix]=x;
