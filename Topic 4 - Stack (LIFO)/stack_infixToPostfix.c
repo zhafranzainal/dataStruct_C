@@ -129,9 +129,9 @@ void push(char item){
 //Function Definition: determine whether a symbol is an operator or an operand
 int isOperator(char symbol){
 
-	if(symbol=='+' || symbol=='-' || symbol=='*'|| symbol=='/'|| symbol=='%'|| symbol=='^'){
-		return 1;}
-	else{
+    if(symbol=='+' || symbol=='-' || symbol=='*'|| symbol=='/'|| symbol=='%'|| symbol=='^'){
+        return 1;}
+    else{
         return 0;}
 }
 
@@ -140,32 +140,30 @@ char pop(){
 
     char item;
 
-	if(top<0){
-		//underflow may occur for invalid expression where ( and ) are not matched
-		printf("Stack underflow! Invalid infix expression");
-		getchar();
-		exit(1);}
-	else{
+    if(top<0){
+        //underflow may occur for invalid expression where ( and ) are not matched
+        printf("Stack underflow! Invalid infix expression");
+        getchar();
+        exit(1);}
+    else{
         item=stack[top];
-		top=top-1;
-		return(item);}
+        top=top-1;
+        return(item);}
 }
 
 //Function Definition: assign precedence to operator
 int precedence(char symbol){
 
     //assume the higher the int value, the higher the precedence
-	//exponent operator '^' as the highest precedence
+    //exponent operator '^' as the highest precedence
     //addition and subtraction operator '+' '-' as the lowest precedence
 
-	if(symbol=='^'){
-		return(3);}
-	else if(symbol=='*' || symbol=='/' || symbol=='%'){
-		return(2);}
-	else if(symbol == '+' || symbol == '-'){
-		return(1);}
-	else{
-		return(0);}
+    if(symbol=='^'){
+        return(3);}
+    else if(symbol=='*' || symbol=='/' || symbol=='%'){
+        return(2);}
+    else if(symbol == '+' || symbol == '-'){
+        return(1);}
+    else{
+        return(0);}
 }
-
-
