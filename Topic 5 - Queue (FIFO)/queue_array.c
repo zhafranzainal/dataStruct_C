@@ -101,7 +101,7 @@ void display(){
         while(loopCount!=0){
             printf("%d", queue[loopFront]);
             printf("\n");
-			loopFront=(loopFront+1)%MAX_QUEUE;
-			loopCount--;}
+            loopFront=(loopFront+1)%MAX_QUEUE;
+            loopCount--;}
     }
 }
