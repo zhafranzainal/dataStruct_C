@@ -91,11 +91,11 @@ void infixToPostfix(char infix_exp[], char postfix_exp[]){
 
             x = pop();
 
-			while(x!='('){
+            while(x!='('){
 
-				postfix_exp[loopPostfix]=x;
-				loopPostfix++;
-				x = pop();}}
+                postfix_exp[loopPostfix]=x;
+                loopPostfix++;
+                x = pop();}}
 
 		//if current symbol is neither operand nor '()' and nor operator
 		else{
