@@ -15,7 +15,7 @@ int main(void){
 
     char userChoice;
 
-	do{
+    do{
         printf("\nFront value   : %d", front);
 	    printf("\nRear value    : %d", rear);
 	    printf("\nCount value   : %d", count);
