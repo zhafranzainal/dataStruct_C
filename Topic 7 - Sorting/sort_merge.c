@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <time.h>
 
+#define MAX 100000
+
 //Function Declaration (Prototype)
-void sort_selection(int randomNum[], int totalNum);
+void sort_merge(int randomNum[], int first, int last);
+void mergeList(int randomNum[], int first, int middle, int last);
 clock_t timer_begin();
 clock_t timer_end(clock_t timeBegin);
 
@@ -11,7 +14,7 @@ int totalCompare=0, totalMove=0;
 int main(void){
 
     double timeBegin;
-    int loop, totalNum=0, randomNum[100000];
+    int loop, totalNum=0, randomNum[MAX];
     float elapseTicks, elapseMsec, elapseSec;
 
     printf("BEFORE SORTING:\n\n");
@@ -30,7 +33,7 @@ int main(void){
     printf("\n\nTimer set to: %.2f", timeBegin);
     timeBegin = timer_begin();
 
-    sort_selection(randomNum, totalNum);
+    sort_merge(randomNum, 0, totalNum-1);
 
     printf("\n\nAFTER SORTING (selection sort):\n\n");
 
@@ -52,30 +55,57 @@ int main(void){
 return 0;
 }
 
-//Function Definition: sort_selection
-void sort_selection(int randomNum[], int totalNum){
+//Function Definition: sort_merge
+void sort_merge(int randomNum[], int first, int last){
 
-    int smallest;
-    int sort1, sort2, temp;
+    int middle;
 
-    for(sort1=0;sort1<totalNum;sort1++){
-        smallest=sort1;
+    if(first<last){
+        middle=(first+last)/2;
+        sort_merge(randomNum, first, middle);
+        sort_merge(randomNum, middle+1, last);
+        mergeList(randomNum, first, middle, last);}
 
-        for(sort2=sort1+1;sort2<totalNum;sort2++){
+}
 
-            if(randomNum[sort2]<randomNum[smallest]){
-                smallest=sort2;}
+//Function Definition: mergeList
+void mergeList(int randomNum[], int first, int middle, int last){
 
-            totalCompare++;
-        }
+    int loop, left, right, count, temp[MAX];
 
-        temp=randomNum[sort1];
-        totalMove++;
-        randomNum[sort1]=randomNum[smallest];
-        totalMove++;
-        randomNum[smallest]=temp;
-        totalMove++;
+    left=first;
+    count=first;
+    right=middle+1;
+
+    while((left<=middle) && (right<=last)){
+
+        if(randomNum[left]<=randomNum[right]){
+            temp[count]=randomNum[left];
+            left++;}
+
+        else{
+            temp[count]=randomNum[right];
+            right++;}
+
+        count++;
     }
+
+	if(left>middle){
+
+		for(loop=right;loop<=last;loop++){
+		    temp[count]=randomNum[loop];
+			count++;}
+	}
+
+	else{
+
+        for(loop=left;loop<=middle;loop++){
+            temp[count]=randomNum[loop];
+            count++;}
+    }
+
+    for(loop=first;loop<=last;loop++){
+        randomNum[loop]=temp[loop];}
 
 }
 

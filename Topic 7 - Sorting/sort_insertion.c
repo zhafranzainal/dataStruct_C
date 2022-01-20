@@ -2,7 +2,7 @@
 #include <time.h>
 
 //Function Declaration (Prototype)
-void sort_selection(int randomNum[], int totalNum);
+void sort_insertion(int randomNum[], int totalNum);
 clock_t timer_begin();
 clock_t timer_end(clock_t timeBegin);
 
@@ -30,7 +30,7 @@ int main(void){
     printf("\n\nTimer set to: %.2f", timeBegin);
     timeBegin = timer_begin();
 
-    sort_selection(randomNum, totalNum);
+    sort_insertion(randomNum, totalNum);
 
     printf("\n\nAFTER SORTING (selection sort):\n\n");
 
@@ -52,30 +52,29 @@ int main(void){
 return 0;
 }
 
-//Function Definition: sort_selection
-void sort_selection(int randomNum[], int totalNum){
+//Function Definition: sort_insertion
+void sort_insertion(int randomNum[], int totalNum){
 
-    int smallest;
     int sort1, sort2, temp;
 
-    for(sort1=0;sort1<totalNum;sort1++){
-        smallest=sort1;
-
-        for(sort2=sort1+1;sort2<totalNum;sort2++){
-
-            if(randomNum[sort2]<randomNum[smallest]){
-                smallest=sort2;}
-
-            totalCompare++;
-        }
+    for(sort1=1;sort1<totalNum;sort1++){
 
         temp=randomNum[sort1];
         totalMove++;
-        randomNum[sort1]=randomNum[smallest];
+		sort2=sort1-1;
+
+		while((temp<randomNum[sort2]) && (sort2>=0)){
+
+            randomNum[sort2+1]=randomNum[sort2];
+            totalMove++;
+            sort2--;
+            totalCompare++;
+        }
+
+        totalCompare++;
+        randomNum[sort2+1]=temp;
         totalMove++;
-        randomNum[smallest]=temp;
-        totalMove++;
-    }
+	}
 
 }
 
