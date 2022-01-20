@@ -84,7 +84,7 @@ void sort_quick(int randomNum[], int bottom, int top){
         sort_quick(randomNum, bottom, left-1);
         sort_quick(randomNum, left+1, top);
 
-	}
+    }
 
 }
 
