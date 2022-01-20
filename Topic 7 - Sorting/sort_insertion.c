@@ -74,7 +74,7 @@ void sort_insertion(int randomNum[], int totalNum){
         totalCompare++;
         randomNum[sort2+1]=temp;
         totalMove++;
-	}
+    }
 
 }
 
