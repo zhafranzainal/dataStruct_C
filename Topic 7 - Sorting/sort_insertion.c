@@ -61,9 +61,9 @@ void sort_insertion(int randomNum[], int totalNum){
 
         temp=randomNum[sort1];
         totalMove++;
-		sort2=sort1-1;
+	sort2=sort1-1;
 
-		while((temp<randomNum[sort2]) && (sort2>=0)){
+	while((temp<randomNum[sort2]) && (sort2>=0)){
 
             randomNum[sort2+1]=randomNum[sort2];
             totalMove++;
