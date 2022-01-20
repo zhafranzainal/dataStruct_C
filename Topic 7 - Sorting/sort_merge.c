@@ -92,16 +92,16 @@ void mergeList(int randomNum[], int first, int middle, int last){
 
     if(left>middle){
 
-	    for(loop=right;loop<=last;loop++){
-	        temp[count]=randomNum[loop];
-	        count++;}
-	}
+        for(loop=right;loop<=last;loop++){
+            temp[count]=randomNum[loop];
+            count++;}
+    }
 
-	else{
+    else{
 
-	    for(loop=left;loop<=middle;loop++){
-	        temp[count]=randomNum[loop];
-	        count++;}
+        for(loop=left;loop<=middle;loop++){
+            temp[count]=randomNum[loop];
+            count++;}
     }
 
     for(loop=first;loop<=last;loop++){
