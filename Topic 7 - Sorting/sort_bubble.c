@@ -64,12 +64,12 @@ void sort_bubble(int randomNum[], int totalNum){
             totalCompare++;
 
             if(randomNum[loop]>randomNum[loop+1]){
-				temp=randomNum[loop];
-				totalMove++;
-				randomNum[loop]=randomNum[loop+1];
-				totalMove++;
-				randomNum[loop+1]=temp;
-				totalMove++;}
+                temp=randomNum[loop];
+                totalMove++;
+                randomNum[loop]=randomNum[loop+1];
+                totalMove++;
+                randomNum[loop+1]=temp;
+                totalMove++;}
         }
     }
 
