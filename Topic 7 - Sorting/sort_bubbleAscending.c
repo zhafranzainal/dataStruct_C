@@ -33,9 +33,9 @@ void sort_bubble(char array[], int stringLength){
         for(loop=0;loop<stringLength;loop++){
 
             if(array[loop]>array[loop+1]){
-				temp=array[loop];
-				array[loop]=array[loop+1];
-				array[loop+1]=temp;}
+                temp=array[loop];
+                array[loop]=array[loop+1];
+                array[loop+1]=temp;}
         }
     }
 
