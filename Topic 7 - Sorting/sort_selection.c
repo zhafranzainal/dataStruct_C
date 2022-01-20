@@ -57,9 +57,9 @@ return 0;
 void sort_selection(int randomNum[], int totalNum){
 
     int smallest;
-	int sort1, sort2, temp;
+    int sort1, sort2, temp;
 
-	for(sort1=0;sort1<totalNum;sort1++){
+    for(sort1=0;sort1<totalNum;sort1++){
         smallest=sort1;
 
         for(sort2=sort1+1;sort2<totalNum;sort2++){
