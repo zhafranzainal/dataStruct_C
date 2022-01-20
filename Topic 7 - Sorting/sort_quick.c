@@ -73,7 +73,7 @@ void sort_quick(int randomNum[], int bottom, int top){
                 randomNum[right]=temp;}
 
             else{
-				break;}
+                break;}
 
         }while(flag>0);
 
