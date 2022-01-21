@@ -7,20 +7,33 @@
 #define FALSE 0
 
 //Structure Declaration (Template)
-struct Node{
+struct Date{
+    int day;
+    int month;
+    int year;};
+
+struct Task{
 
     //Data Field
-    int element;
+    int num;
+    char name[100];
+
+    struct Subtask{
+        char name[100];
+        char details[100];
+        char time[5];
+        struct Date date;}subtask;
 
     //Pointer (Link) Field
-    struct Node *ptrNext;};
+    struct Task *ptrNext;};
 
-struct Node *front, *rear, *ptrNew, *ptrCurrent;
+struct Task *front, *rear, *ptrNew, *ptrCurrent;
 
 //Function Declaration (Prototype)
-void enqueue();
-void dequeue();
-void list_node();
+void enqueue_task();
+void dequeue_task();
+void display_task();
+void adjust_num();
 
 int main(void){
 
@@ -28,7 +41,6 @@ int main(void){
     int userExit=TRUE;
 
     front=NULL;
-    printf("What is happening");
 
     printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -42,9 +54,9 @@ int main(void){
     while(userExit==TRUE){
 
         printf("\n[-----------TO-DO-APP Menu-----------]");
-        printf("\nA - Enqueue queue");
-        printf("\nB - Dequeue queue");
-        printf("\nD - Display queue content");
+        printf("\nA - Create new task (enqueue)");
+        printf("\nB - Delete task (dequeue)");
+        printf("\nD - Display tasks list");
         printf("\nX - Exit\n");
 
         printf("\nEnter choice: ");
@@ -53,11 +65,11 @@ int main(void){
         userChoice=toupper(userChoice);
 
         switch(userChoice){
-        case 'A': enqueue();
+        case 'A': enqueue_task();
                   break;
-        case 'B': dequeue();
+        case 'B': dequeue_task();
                   break;
-        case 'D': list_node();
+        case 'D': display_task();
                   break;
         case 'X': userExit=FALSE;
                   break;
@@ -70,30 +82,32 @@ int main(void){
 return 0;
 }
 
-//Function Definition: enqueue
-void enqueue(){
+//Function Definition: enqueue_task
+void enqueue_task(){
 
-    ptrNew=(struct Node *)malloc(sizeof(struct Node));
+    ptrNew=(struct Task *)malloc(sizeof(struct Task));
 
-    printf("\nEnter an element   : ");
-    scanf(" %d", &ptrNew->element);
+    printf("\nEnter task name:\n");
+    scanf(" %[^\n]s", &ptrNew->name);
     ptrNew->ptrNext=NULL;
 
     printf("\n");
 
     if(front==NULL){
         front=ptrNew;
-        rear=ptrNew;}
+        rear=ptrNew;
+        ptrNew->num=1;}
 
     else{
         rear->ptrNext=ptrNew;
         rear=ptrNew;}
 
-    list_node();
+    adjust_num();
+    display_task();
 }
 
-//Function Definition: dequeue
-void dequeue(){
+//Function Definition: dequeue_task
+void dequeue_task(){
 
     system("cls");
 
@@ -105,13 +119,14 @@ void dequeue(){
 
     else{
         front=front->ptrNext;
-        free(ptrCurrent);}
+        free(ptrCurrent);
+        adjust_num();}
 
-    list_node();
+    display_task();
 }
 
-//Function Definition: list_node
-void list_node(){
+//Function Definition: display_task
+void display_task(){
 
     system("cls");
 
@@ -122,12 +137,26 @@ void list_node(){
         ptrCurrent=front;
 
         do{
-            printf("%d", ptrCurrent->element);
+            printf("%d. %s", ptrCurrent->num, ptrCurrent->name);
 
             printf("\n");
 
             ptrCurrent=ptrCurrent->ptrNext;
 
         }while(ptrCurrent!=NULL);}
+
+}
+
+//Function Definition: adjust_num
+void adjust_num(){
+
+	int loop=1;
+
+	ptrNew=front;
+
+	while(ptrNew!=NULL){
+        ptrNew->num=loop;
+		loop++;
+		ptrNew=ptrNew->ptrNext;}
 
 }
