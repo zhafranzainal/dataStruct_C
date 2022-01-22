@@ -41,6 +41,8 @@ void enqueue_task();
 void dequeue_task();
 void display_task();
 void searchLinear_task();
+void swap(struct Task *data1, struct Task *data2);
+void sort_task();
 void adjust_num();
 
 int main(void){
@@ -201,6 +203,7 @@ int main(void){
         printf("\nB - Delete task (dequeue)");
         printf("\nD - Display tasks list");
         printf("\nS - Search task");
+        printf("\nT - Sort task by date");
         printf("\nX - Exit\n");
 
         printf("\nEnter choice: ");
@@ -216,6 +219,8 @@ int main(void){
         case 'D': display_task();
                   break;
         case 'S': searchLinear_task();
+                  break;
+        case 'T': sort_task();
                   break;
         case 'X': userExit=FALSE;
                   break;
@@ -359,6 +364,75 @@ void searchLinear_task(){
         else{
             printf("\nSorry, no match found!\n");}
     }
+}
+
+//Function Definition: swap
+void swap(struct Task *data1, struct Task *data2){
+
+    int temp;
+
+    temp=data2->details.date.year;
+    data2->details.date.year=data1->details.date.year;
+    data1->details.date.year=temp;
+
+    temp=data2->details.date.month;
+    data2->details.date.month=data1->details.date.month;
+    data1->details.date.month=temp;
+
+    temp=data2->details.date.day;
+    data2->details.date.day=data1->details.date.day;
+    data1->details.date.day=temp;
+
+}
+
+//Function Definition: sort_task
+void sort_task(){
+
+    int swapped;
+    struct Task *ptrFirst;
+    struct Task *ptrSecond=NULL;
+
+    if(front==NULL){
+        printf("\nEmpty task list for today.\n");}
+
+    do{
+        swapped=FALSE;
+        ptrFirst=front;
+
+        while(ptrFirst->ptrNext!=ptrSecond){
+
+            if(ptrFirst->details.date.year > ptrFirst->ptrNext->details.date.year){
+                swap(ptrFirst, ptrFirst->ptrNext);
+                swapped = TRUE;}
+
+            else{
+
+                if(ptrFirst->details.date.year == ptrFirst->ptrNext->details.date.year){
+
+                    if(ptrFirst->details.date.month > ptrFirst->ptrNext->details.date.month){
+                        swap(ptrFirst, ptrFirst->ptrNext);
+                        swapped = TRUE;}
+
+                    else{
+
+                        if(ptrFirst->details.date.month == ptrFirst->ptrNext->details.date.month){
+
+                            if(ptrFirst->details.date.day > ptrFirst->ptrNext->details.date.day){
+                                swap(ptrFirst, ptrFirst->ptrNext);
+                                swapped = TRUE;}
+                        }
+                    }
+                }
+            }
+
+            ptrFirst=ptrFirst->ptrNext;}
+
+        ptrSecond=ptrFirst;
+
+    }while(swapped==TRUE);
+
+    display_task();
+
 }
 
 //Function Definition: adjust_num
