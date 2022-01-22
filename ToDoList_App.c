@@ -9,11 +9,8 @@
 
 //Structure Declaration (Template)
 struct User{
-
     char username[20];
-    char password[20];
-
-};
+    char password[20];};
 
 struct Date{
     int day;
