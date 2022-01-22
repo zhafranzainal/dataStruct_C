@@ -7,6 +7,12 @@
 #define FALSE 0
 
 //Structure Declaration (Template)
+/*struct User{
+
+
+
+};*/
+
 struct Date{
     int day;
     int month;
@@ -33,6 +39,7 @@ struct Task *front, *rear, *ptrNew, *ptrCurrent;
 void enqueue_task();
 void dequeue_task();
 void display_task();
+void display_subtaskMenu();
 void adjust_num();
 
 int main(void){
@@ -53,10 +60,11 @@ int main(void){
 
     while(userExit==TRUE){
 
-        printf("\n[-----------TO-DO-APP Menu-----------]");
+        printf("\n[----------TO-DO-APP Menu----------]");
         printf("\nA - Create new task (enqueue)");
         printf("\nB - Delete task (dequeue)");
         printf("\nD - Display tasks list");
+        printf("\nS - Display subtask menu");
         printf("\nX - Exit\n");
 
         printf("\nEnter choice: ");
@@ -70,6 +78,8 @@ int main(void){
         case 'B': dequeue_task();
                   break;
         case 'D': display_task();
+                  break;
+        case 'S': display_subtaskMenu();
                   break;
         case 'X': userExit=FALSE;
                   break;
@@ -114,7 +124,7 @@ void dequeue_task(){
     ptrCurrent=front;
 
     if(front==NULL){
-        printf("Nothing to be deleted!\n");
+        printf("Nothing to be deleted!\n\n");
         return;}
 
     else{
@@ -130,8 +140,10 @@ void display_task(){
 
     system("cls");
 
+    printf("TO-DO-LIST\n");
+
     if(front==NULL){
-        printf("Empty queue.\n");}
+        printf("Empty task list for today.\n");}
 
     else{
         ptrCurrent=front;
@@ -146,6 +158,59 @@ void display_task(){
         }while(ptrCurrent!=NULL);}
 
 }
+
+//Function Definition: display_subtask
+void display_subtaskMenu(){
+
+    int userChoice, userExit=TRUE;
+
+    system("cls");
+
+    printf("TO-DO-LIST\n");
+
+    if(front==NULL){
+        printf("Empty task list for today.\n");}
+
+    else{
+        ptrCurrent=front;
+
+        do{
+            printf("%d. %s", ptrCurrent->num, ptrCurrent->name);
+
+            printf("\n");
+
+            ptrCurrent=ptrCurrent->ptrNext;
+
+        }while(ptrCurrent!=NULL);
+
+
+        while(userExit==TRUE){
+
+            printf("\n[-----------Subtask Menu-----------]");
+            printf("\n1 - Create new To-Do-List");
+            printf("\n2 - Delete To-Do-List");
+            printf("\n3 - Display To-Do-List");
+            printf("\n4 - Return to main menu\n");
+
+            printf("\nEnter choice: ");
+            scanf(" %d", &userChoice);
+
+            switch(userChoice){
+            case 1: enqueue_task();
+                    break;
+            case 2: dequeue_task();
+                    break;
+            case 3: display_task();
+                    break;
+            case 4: return;
+
+            default: system("cls");
+                     printf("Choose only one of the options!\n");}}
+
+    }
+
+}
+
 
 //Function Definition: adjust_num
 void adjust_num(){
