@@ -2,6 +2,7 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <conio.h>
+#include <string.h>
 
 #define TRUE 1
 #define FALSE 0
@@ -36,6 +37,7 @@ struct Task{
 struct Task *front, *rear, *ptrNew, *ptrCurrent;
 
 //Function Declaration (Prototype)
+void enqueue_taskDefault();
 void enqueue_task();
 void dequeue_task();
 void display_task();
@@ -51,6 +53,66 @@ int main(void){
     int userExit=TRUE;
 
     front=NULL;
+
+    ptrNew=(struct Task *)malloc(sizeof(struct Task));
+    strcpy(ptrNew->name, "Submit Project Phase 3 OOP");
+    enqueue_taskDefault();
+
+    ptrNew=(struct Task *)malloc(sizeof(struct Task));
+    strcpy(ptrNew->name, "Submit Final SRS SRW");
+    enqueue_taskDefault();
+
+    ptrNew=(struct Task *)malloc(sizeof(struct Task));
+    strcpy(ptrNew->name, "Submit Recommendation Report UHL");
+    enqueue_taskDefault();
+
+    ptrNew=(struct Task *)malloc(sizeof(struct Task));
+    strcpy(ptrNew->name, "Submit Project DSA");
+    enqueue_taskDefault();
+
+    ptrNew=(struct Task *)malloc(sizeof(struct Task));
+    strcpy(ptrNew->name, "Submit Homework Stats");
+    enqueue_taskDefault();
+
+    ptrNew=(struct Task *)malloc(sizeof(struct Task));
+    strcpy(ptrNew->name, "Prepare Exam DSA");
+    enqueue_taskDefault();
+
+    ptrNew=(struct Task *)malloc(sizeof(struct Task));
+    strcpy(ptrNew->name, "Prepare Exam OOP");
+    enqueue_taskDefault();
+
+    ptrNew=(struct Task *)malloc(sizeof(struct Task));
+    strcpy(ptrNew->name, "Prepare Exam HCI");
+    enqueue_taskDefault();
+
+    ptrNew=(struct Task *)malloc(sizeof(struct Task));
+    strcpy(ptrNew->name, "Prepare Exam Stats");
+    enqueue_taskDefault();
+
+    ptrNew=(struct Task *)malloc(sizeof(struct Task));
+    strcpy(ptrNew->name, "Practice Git");
+    enqueue_taskDefault();
+
+    ptrNew=(struct Task *)malloc(sizeof(struct Task));
+    strcpy(ptrNew->name, "Practice Web Engineering");
+    enqueue_taskDefault();
+
+    ptrNew=(struct Task *)malloc(sizeof(struct Task));
+    strcpy(ptrNew->name, "Practice Turkish");
+    enqueue_taskDefault();
+
+    ptrNew=(struct Task *)malloc(sizeof(struct Task));
+    strcpy(ptrNew->name, "Practice Web Frameworks");
+    enqueue_taskDefault();
+
+    ptrNew=(struct Task *)malloc(sizeof(struct Task));
+    strcpy(ptrNew->name, "Practice Mobile Development");
+    enqueue_taskDefault();
+
+    ptrNew=(struct Task *)malloc(sizeof(struct Task));
+    strcpy(ptrNew->name, "Read Finance Articles");
+    enqueue_taskDefault();
 
     printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -95,6 +157,24 @@ int main(void){
 return 0;
 }
 
+//Function Definition: enqueue_taskDefault
+void enqueue_taskDefault(){
+
+    ptrNew->ptrNext=NULL;
+
+    if(front==NULL){
+        front=ptrNew;
+        rear=ptrNew;
+        ptrNew->num=1;}
+
+    else{
+        rear->ptrNext=ptrNew;
+        rear=ptrNew;}
+
+    adjust_num();
+
+}
+
 //Function Definition: enqueue_task
 void enqueue_task(){
 
@@ -103,8 +183,6 @@ void enqueue_task(){
     printf("\nEnter task name:\n");
     scanf(" %[^\n]s", &ptrNew->name);
     ptrNew->ptrNext=NULL;
-
-    printf("\n");
 
     if(front==NULL){
         front=ptrNew;
