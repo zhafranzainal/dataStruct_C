@@ -25,11 +25,10 @@ struct Task{
     int num;
     char name[100];
 
-    struct Subtask{
-        char name[100];
-        char details[100];
+    struct Details{
+        char category[100];
         char time[5];
-        struct Date date;}subtask;
+        struct Date date;}details;
 
     //Pointer (Link) Field
     struct Task *ptrNext;};
@@ -41,10 +40,7 @@ void enqueue_taskDefault();
 void enqueue_task();
 void dequeue_task();
 void display_task();
-void display_subtaskMenu();
-void create_subtask();
-void delete_subtask();
-void display_subtask();
+void searchLinear_task();
 void adjust_num();
 
 int main(void){
@@ -56,62 +52,137 @@ int main(void){
 
     ptrNew=(struct Task *)malloc(sizeof(struct Task));
     strcpy(ptrNew->name, "Submit Project Phase 3 OOP");
+    strcpy(ptrNew->details.category, "Assignment");
+    ptrNew->details.date.day=26;
+    ptrNew->details.date.month=01;
+    ptrNew->details.date.year=2022;
+    strcpy(ptrNew->details.time, "1159");
     enqueue_taskDefault();
 
     ptrNew=(struct Task *)malloc(sizeof(struct Task));
     strcpy(ptrNew->name, "Submit Final SRS SRW");
+    strcpy(ptrNew->details.category, "Assignment");
+    ptrNew->details.date.day=26;
+    ptrNew->details.date.month=01;
+    ptrNew->details.date.year=2022;
+    strcpy(ptrNew->details.time, "1159");
     enqueue_taskDefault();
 
     ptrNew=(struct Task *)malloc(sizeof(struct Task));
     strcpy(ptrNew->name, "Submit Recommendation Report UHL");
+    strcpy(ptrNew->details.category, "Assignment");
+    ptrNew->details.date.day=28;
+    ptrNew->details.date.month=01;
+    ptrNew->details.date.year=2022;
+    strcpy(ptrNew->details.time, "1159");
     enqueue_taskDefault();
 
     ptrNew=(struct Task *)malloc(sizeof(struct Task));
     strcpy(ptrNew->name, "Submit Project DSA");
+    strcpy(ptrNew->details.category, "Assignment");
+    ptrNew->details.date.day=31;
+    ptrNew->details.date.month=01;
+    ptrNew->details.date.year=2022;
+    strcpy(ptrNew->details.time, "1159");
     enqueue_taskDefault();
 
     ptrNew=(struct Task *)malloc(sizeof(struct Task));
     strcpy(ptrNew->name, "Submit Homework Stats");
+    strcpy(ptrNew->details.category, "Assignment");
+    ptrNew->details.date.day=24;
+    ptrNew->details.date.month=01;
+    ptrNew->details.date.year=2022;
+    strcpy(ptrNew->details.time, "0800");
     enqueue_taskDefault();
 
     ptrNew=(struct Task *)malloc(sizeof(struct Task));
     strcpy(ptrNew->name, "Prepare Exam DSA");
+    strcpy(ptrNew->details.category, "Test");
+    ptrNew->details.date.day=11;
+    ptrNew->details.date.month=02;
+    ptrNew->details.date.year=2022;
+    strcpy(ptrNew->details.time, "1445");
     enqueue_taskDefault();
 
     ptrNew=(struct Task *)malloc(sizeof(struct Task));
     strcpy(ptrNew->name, "Prepare Exam OOP");
+    strcpy(ptrNew->details.category, "Test");
+    ptrNew->details.date.day=9;
+    ptrNew->details.date.month=02;
+    ptrNew->details.date.year=2022;
+    strcpy(ptrNew->details.time, "1400");
     enqueue_taskDefault();
 
     ptrNew=(struct Task *)malloc(sizeof(struct Task));
     strcpy(ptrNew->name, "Prepare Exam HCI");
+    strcpy(ptrNew->details.category, "Test");
+    ptrNew->details.date.day=9;
+    ptrNew->details.date.month=02;
+    ptrNew->details.date.year=2022;
+    strcpy(ptrNew->details.time, "0900");
     enqueue_taskDefault();
 
     ptrNew=(struct Task *)malloc(sizeof(struct Task));
     strcpy(ptrNew->name, "Prepare Exam Stats");
+    strcpy(ptrNew->details.category, "Test");
+    ptrNew->details.date.day=07;
+    ptrNew->details.date.month=02;
+    ptrNew->details.date.year=2022;
+    strcpy(ptrNew->details.time, "0900");
     enqueue_taskDefault();
 
     ptrNew=(struct Task *)malloc(sizeof(struct Task));
     strcpy(ptrNew->name, "Practice Git");
+    strcpy(ptrNew->details.category, "Hobby");
+    ptrNew->details.date.day=14;
+    ptrNew->details.date.month=02;
+    ptrNew->details.date.year=2022;
+    strcpy(ptrNew->details.time, "0900");
     enqueue_taskDefault();
 
     ptrNew=(struct Task *)malloc(sizeof(struct Task));
     strcpy(ptrNew->name, "Practice Web Engineering");
+    strcpy(ptrNew->details.category, "Hobby");
+    ptrNew->details.date.day=15;
+    ptrNew->details.date.month=02;
+    ptrNew->details.date.year=2022;
+    strcpy(ptrNew->details.time, "1000");
     enqueue_taskDefault();
 
     ptrNew=(struct Task *)malloc(sizeof(struct Task));
     strcpy(ptrNew->name, "Practice Turkish");
+    strcpy(ptrNew->details.category, "Hobby");
+    ptrNew->details.date.day=16;
+    ptrNew->details.date.month=02;
+    ptrNew->details.date.year=2022;
+    strcpy(ptrNew->details.time, "2030");
     enqueue_taskDefault();
 
     ptrNew=(struct Task *)malloc(sizeof(struct Task));
     strcpy(ptrNew->name, "Practice Web Frameworks");
+    strcpy(ptrNew->details.category, "Hobby");
+    ptrNew->details.date.day=16;
+    ptrNew->details.date.month=02;
+    ptrNew->details.date.year=2022;
+    strcpy(ptrNew->details.time, "0830");
     enqueue_taskDefault();
 
     ptrNew=(struct Task *)malloc(sizeof(struct Task));
     strcpy(ptrNew->name, "Practice Mobile Development");
+    strcpy(ptrNew->details.category, "Hobby");
+    ptrNew->details.date.day=15;
+    ptrNew->details.date.month=02;
+    ptrNew->details.date.year=2022;
+    strcpy(ptrNew->details.time, "0930");
     enqueue_taskDefault();
 
     ptrNew=(struct Task *)malloc(sizeof(struct Task));
     strcpy(ptrNew->name, "Read Finance Articles");
+    strcpy(ptrNew->details.category, "Hobby");
+    ptrNew->details.date.day=10;
+    ptrNew->details.date.month=02;
+    ptrNew->details.date.year=2022;
+    strcpy(ptrNew->details.time, "1745");
     enqueue_taskDefault();
 
     printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -129,7 +200,7 @@ int main(void){
         printf("\nA - Create new task (enqueue)");
         printf("\nB - Delete task (dequeue)");
         printf("\nD - Display tasks list");
-        printf("\nS - Display subtask menu");
+        printf("\nS - Search task");
         printf("\nX - Exit\n");
 
         printf("\nEnter choice: ");
@@ -144,7 +215,7 @@ int main(void){
                   break;
         case 'D': display_task();
                   break;
-        case 'S': display_subtaskMenu();
+        case 'S': searchLinear_task();
                   break;
         case 'X': userExit=FALSE;
                   break;
@@ -182,6 +253,18 @@ void enqueue_task(){
 
     printf("\nEnter task name:\n");
     scanf(" %[^\n]s", &ptrNew->name);
+
+    printf("\n");
+
+    printf("Enter task category  : ");
+    scanf(" %[^\n]s", &ptrNew->details.category);
+
+    printf("Enter date (dd/mm/yyyy) : ");
+    scanf(" %d/%d/%d", &ptrNew->details.date.day, &ptrNew->details.date.month, &ptrNew->details.date.year);
+
+    printf("Enter time (24-hour)    : ");
+    scanf(" %s", &ptrNew->details.time);
+
     ptrNew->ptrNext=NULL;
 
     if(front==NULL){
@@ -205,7 +288,7 @@ void dequeue_task(){
     ptrCurrent=front;
 
     if(front==NULL){
-        printf("Nothing to be deleted!\n\n");
+        printf("Nothing to be deleted!\n\n\n");
         return;}
 
     else{
@@ -221,16 +304,20 @@ void display_task(){
 
     system("cls");
 
-    printf("TO-DO-LIST\n");
+    printf("\t\t\t\tTO-DO-LIST\n");
+    printf("===============================================================================");
 
     if(front==NULL){
-        printf("Empty task list for today.\n");}
+        printf("\nEmpty task list for today.\n");}
 
     else{
         ptrCurrent=front;
 
+        printf("\n\n\tTask Name\t\t\t  Category\t   Date\t\t  Time");
+        printf("\n-------------------------------------\t ----------\t ----------\t ------\n");
+
         do{
-            printf("%d. %s", ptrCurrent->num, ptrCurrent->name);
+            printf("%2d. %-36s %-15s %2d/%d/%d %11s", ptrCurrent->num, ptrCurrent->name, ptrCurrent->details.category, ptrCurrent->details.date.day, ptrCurrent->details.date.month, ptrCurrent->details.date.year, ptrCurrent->details.time);
 
             printf("\n");
 
@@ -240,77 +327,38 @@ void display_task(){
 
 }
 
-//Function Definition: display_subtask
-void display_subtaskMenu(){
+//Function Definition: searchLinear_task
+void searchLinear_task(){
 
-    int userChoice, userExit=TRUE;
+    int searchValue;
 
     system("cls");
 
-    printf("TO-DO-LIST\n");
-
     if(front==NULL){
-        printf("Empty task list for today.\n");}
+        printf("The task list is empty. Nothing to be searched!\n\n");}
 
     else{
+
+        display_task();
+
+        printf("\nEnter task number: ");
+        scanf(" %d", &searchValue);
+
         ptrCurrent=front;
 
-        do{
-            printf("%d. %s", ptrCurrent->num, ptrCurrent->name);
+        while(ptrCurrent->ptrNext!=NULL){
 
-            printf("\n");
+            if(ptrCurrent->num==searchValue){
+                printf("\nTask %d found!\n", ptrCurrent->num);
+                return;}
+            else{
+                ptrCurrent=ptrCurrent->ptrNext;}}
 
-            ptrCurrent=ptrCurrent->ptrNext;
-
-        }while(ptrCurrent!=NULL);
-
-
-        while(userExit==TRUE){
-
-            printf("\n[-----------Subtask Menu-----------]");
-            printf("\n1 - Create new To-Do-List");
-            printf("\n2 - Delete To-Do-List");
-            printf("\n3 - Display To-Do-List");
-            printf("\n4 - Return to main menu\n");
-
-            printf("\nEnter choice: ");
-            scanf(" %d", &userChoice);
-
-            switch(userChoice){
-            case 1: create_subtask();
-                    break;
-            case 2: delete_subtask();
-                    break;
-            case 3: display_subtask();
-                    break;
-            case 4: return;
-
-            default: system("cls");
-                     printf("Choose only one of the options!\n");}}
-
+        if(ptrCurrent->num==searchValue){
+            printf("\nTask %d found!\n", ptrCurrent->num);}
+        else{
+            printf("\nSorry, no match found!\n");}
     }
-
-}
-
-//Function Definition: create_subtask
-void create_subtask(){
-
-
-
-}
-
-//Function Definition: delete_subtask
-void delete_subtask(){
-
-
-
-}
-
-//Function Definition: display_subtask
-void display_subtask(){
-
-
-
 }
 
 //Function Definition: adjust_num
