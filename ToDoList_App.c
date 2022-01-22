@@ -39,11 +39,11 @@ struct Task *front, *rear, *ptrNew, *ptrCurrent;
 void enqueue_taskDefault();
 void enqueue_task();
 void dequeue_task();
+void adjust_num();
 void display_task();
 void searchLinear_task();
-void swap(struct Task *data1, struct Task *data2);
-void sort_task();
-void adjust_num();
+void swap_date(struct Task *data1, struct Task *data2);
+void sort_taskByDate();
 
 int main(void){
 
@@ -220,7 +220,7 @@ int main(void){
                   break;
         case 'S': searchLinear_task();
                   break;
-        case 'T': sort_task();
+        case 'T': sort_taskByDate();
                   break;
         case 'X': userExit=FALSE;
                   break;
@@ -304,6 +304,20 @@ void dequeue_task(){
     display_task();
 }
 
+//Function Definition: adjust_num
+void adjust_num(){
+
+	int loop=1;
+
+	ptrNew=front;
+
+	while(ptrNew!=NULL){
+        ptrNew->num=loop;
+		loop++;
+		ptrNew=ptrNew->ptrNext;}
+
+}
+
 //Function Definition: display_task
 void display_task(){
 
@@ -366,8 +380,8 @@ void searchLinear_task(){
     }
 }
 
-//Function Definition: swap
-void swap(struct Task *data1, struct Task *data2){
+//Function Definition: swap_date
+void swap_date(struct Task *data1, struct Task *data2){
 
     int temp;
 
@@ -385,8 +399,8 @@ void swap(struct Task *data1, struct Task *data2){
 
 }
 
-//Function Definition: sort_task
-void sort_task(){
+//Function Definition: sort_taskByDate
+void sort_taskByDate(){
 
     int swapped;
     struct Task *ptrFirst;
@@ -402,7 +416,7 @@ void sort_task(){
         while(ptrFirst->ptrNext!=ptrSecond){
 
             if(ptrFirst->details.date.year > ptrFirst->ptrNext->details.date.year){
-                swap(ptrFirst, ptrFirst->ptrNext);
+                swap_date(ptrFirst, ptrFirst->ptrNext);
                 swapped = TRUE;}
 
             else{
@@ -410,7 +424,7 @@ void sort_task(){
                 if(ptrFirst->details.date.year == ptrFirst->ptrNext->details.date.year){
 
                     if(ptrFirst->details.date.month > ptrFirst->ptrNext->details.date.month){
-                        swap(ptrFirst, ptrFirst->ptrNext);
+                        swap_date(ptrFirst, ptrFirst->ptrNext);
                         swapped = TRUE;}
 
                     else{
@@ -418,7 +432,7 @@ void sort_task(){
                         if(ptrFirst->details.date.month == ptrFirst->ptrNext->details.date.month){
 
                             if(ptrFirst->details.date.day > ptrFirst->ptrNext->details.date.day){
-                                swap(ptrFirst, ptrFirst->ptrNext);
+                                swap_date(ptrFirst, ptrFirst->ptrNext);
                                 swapped = TRUE;}
                         }
                     }
@@ -432,19 +446,5 @@ void sort_task(){
     }while(swapped==TRUE);
 
     display_task();
-
-}
-
-//Function Definition: adjust_num
-void adjust_num(){
-
-	int loop=1;
-
-	ptrNew=front;
-
-	while(ptrNew!=NULL){
-        ptrNew->num=loop;
-		loop++;
-		ptrNew=ptrNew->ptrNext;}
 
 }
