@@ -384,6 +384,7 @@ void searchLinear_task(){
 void swap_date(struct Task *data1, struct Task *data2){
 
     int temp;
+    char tempTaskName[100], tempCategory[100], tempTime[5];
 
     temp=data2->details.date.year;
     data2->details.date.year=data1->details.date.year;
@@ -396,6 +397,18 @@ void swap_date(struct Task *data1, struct Task *data2){
     temp=data2->details.date.day;
     data2->details.date.day=data1->details.date.day;
     data1->details.date.day=temp;
+
+    strcpy(tempTaskName, data2->name);
+    strcpy(data2->name, data1->name);
+    strcpy(data1->name, tempTaskName);
+
+    strcpy(tempCategory, data2->details.category);
+    strcpy(data2->details.category, data1->details.category);
+    strcpy(data1->details.category, tempCategory);
+
+    strcpy(tempTime, data2->details.time);
+    strcpy(data2->details.time, data1->details.time);
+    strcpy(data1->details.time, tempTime);
 
 }
 
