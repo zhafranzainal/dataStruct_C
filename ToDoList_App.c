@@ -8,11 +8,12 @@
 #define FALSE 0
 
 //Structure Declaration (Template)
-/*struct User{
+struct User{
 
+    char username[20];
+    char password[20];
 
-
-};*/
+};
 
 struct Date{
     int day;
@@ -42,10 +43,13 @@ void dequeue_task();
 void adjust_num();
 void display_task();
 void searchLinear_task();
-void swap_date(struct Task *data1, struct Task *data2);
+void swap_task(struct Task *data1, struct Task *data2);
 void sort_taskByDate();
 
 int main(void){
+
+    //Structure Variable
+    struct User user;
 
     char userChoice;
     int userExit=TRUE;
@@ -187,6 +191,7 @@ int main(void){
     strcpy(ptrNew->details.time, "1745");
     enqueue_taskDefault();
 
+    start:
     printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     printf("\n\n} : } : } : } : WELCOME TO the TO-DO-LIST APPLICATION : { : { : { : {");
@@ -194,7 +199,19 @@ int main(void){
     printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     printf("\n\n\t\t\t\t\t\t    @Section5_Group9\n");
 
-	system("pause");
+    printf("\t\t Username: ");
+    scanf(" %s", &user.username);
+
+    printf("\t\t Password: ");
+    scanf(" %s", &user.password);
+
+    if(strcmp(user.password, "123")==0){
+         system("cls");}
+    else{
+        printf("\n\tWRONG PASSWORD!! PLEASE TRY AGAIN\n\n\n");
+        system("pause");
+        system("cls");
+        goto start;}
 
     while(userExit==TRUE){
 
@@ -354,7 +371,7 @@ void searchLinear_task(){
     system("cls");
 
     if(front==NULL){
-        printf("The task list is empty. Nothing to be searched!\n\n");}
+        printf("The task list is empty. Nothing to be searched!\n\n\n");}
 
     else{
 
@@ -380,8 +397,8 @@ void searchLinear_task(){
     }
 }
 
-//Function Definition: swap_date
-void swap_date(struct Task *data1, struct Task *data2){
+//Function Definition: swap_task
+void swap_task(struct Task *data1, struct Task *data2){
 
     int temp;
     char tempTaskName[100], tempCategory[100], tempTime[5];
@@ -420,7 +437,9 @@ void sort_taskByDate(){
     struct Task *ptrSecond=NULL;
 
     if(front==NULL){
-        printf("\nEmpty task list for today.\n");}
+        system("cls");
+        printf("Empty task list for today. Nothing to be sorted!\n\n\n");
+        return;}
 
     do{
         swapped=FALSE;
@@ -429,7 +448,7 @@ void sort_taskByDate(){
         while(ptrFirst->ptrNext!=ptrSecond){
 
             if(ptrFirst->details.date.year > ptrFirst->ptrNext->details.date.year){
-                swap_date(ptrFirst, ptrFirst->ptrNext);
+                swap_task(ptrFirst, ptrFirst->ptrNext);
                 swapped = TRUE;}
 
             else{
@@ -437,7 +456,7 @@ void sort_taskByDate(){
                 if(ptrFirst->details.date.year == ptrFirst->ptrNext->details.date.year){
 
                     if(ptrFirst->details.date.month > ptrFirst->ptrNext->details.date.month){
-                        swap_date(ptrFirst, ptrFirst->ptrNext);
+                        swap_task(ptrFirst, ptrFirst->ptrNext);
                         swapped = TRUE;}
 
                     else{
@@ -445,7 +464,7 @@ void sort_taskByDate(){
                         if(ptrFirst->details.date.month == ptrFirst->ptrNext->details.date.month){
 
                             if(ptrFirst->details.date.day > ptrFirst->ptrNext->details.date.day){
-                                swap_date(ptrFirst, ptrFirst->ptrNext);
+                                swap_task(ptrFirst, ptrFirst->ptrNext);
                                 swapped = TRUE;}
                         }
                     }
