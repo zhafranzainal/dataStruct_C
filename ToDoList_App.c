@@ -37,6 +37,9 @@ struct Task{
 struct Task *front, *rear, *ptrNew, *ptrCurrent;
 
 //Function Declaration (Prototype)
+struct User display_login();
+struct User get_userDetails();
+void process_userAuthentication(struct User user);
 void enqueue_taskDefault();
 void enqueue_task();
 void dequeue_task();
@@ -191,27 +194,11 @@ int main(void){
     strcpy(ptrNew->details.time, "1745");
     enqueue_taskDefault();
 
-    start:
-    printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-    printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-    printf("\n\n} : } : } : } : WELCOME TO the TO-DO-LIST APPLICATION : { : { : { : {");
-    printf("\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-    printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-    printf("\n\n\t\t\t\t\t\t    @Section5_Group9\n");
+    //Function Calling: display_login
+    user=display_login();
 
-    printf("\t\t Username: ");
-    scanf(" %s", &user.username);
-
-    printf("\t\t Password: ");
-    scanf(" %s", &user.password);
-
-    if(strcmp(user.password, "123")==0){
-         system("cls");}
-    else{
-        printf("\n\tTHE PASSWORD IS INCORRECT! PLEASE TRY AGAIN (Pass: 123)\n\n\n");
-        system("pause");
-        system("cls");
-        goto start;}
+    //Function Calling: process_userAuthentication
+    process_userAuthentication(user);
 
     while(userExit==TRUE){
 
@@ -245,9 +232,53 @@ int main(void){
         default: system("cls");
                  printf("Choose only one of the options!\n");}}
 
-    getch();
-
 return 0;
+}
+
+//Function Definition: display_login
+struct User display_login(){
+
+    struct User user;
+
+    printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    printf("\n\n} : } : } : } : WELCOME TO the TO-DO-LIST APPLICATION : { : { : { : {");
+    printf("\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    printf("\n\n\t\t\t\t\t\t    @Section5_Group9\n");
+
+    //Function Calling: get_userDetails
+    user=get_userDetails();
+
+    return user;
+}
+
+//Function Definition: get_userDetails
+struct User get_userDetails(){
+
+    struct User user;
+
+    printf("\t\t Username: ");
+    scanf(" %s", &user.username);
+
+    printf("\t\t Password: ");
+    scanf(" %s", &user.password);
+
+    return user;
+
+}
+
+//Function Definition: process_userAuthentication
+void process_userAuthentication(struct User user){
+
+    if(strcmp(user.password, "123")==0){
+         system("cls");}
+    else{
+        printf("\n\tTHE PASSWORD IS INCORRECT! PLEASE TRY AGAIN (Pass: 123)\n\n\n");
+        system("pause");
+        system("cls");
+        display_login();}
+
 }
 
 //Function Definition: enqueue_taskDefault
