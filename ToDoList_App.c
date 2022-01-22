@@ -208,7 +208,7 @@ int main(void){
     if(strcmp(user.password, "123")==0){
          system("cls");}
     else{
-        printf("\n\tWRONG PASSWORD!! PLEASE TRY AGAIN\n\n\n");
+        printf("\n\tTHE PASSWORD IS INCORRECT! PLEASE TRY AGAIN (Pass: 123)\n\n\n");
         system("pause");
         system("cls");
         goto start;}
