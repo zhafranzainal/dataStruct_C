@@ -40,6 +40,9 @@ void enqueue_task();
 void dequeue_task();
 void display_task();
 void display_subtaskMenu();
+void create_subtask();
+void delete_subtask();
+void display_subtask();
 void adjust_num();
 
 int main(void){
@@ -196,11 +199,11 @@ void display_subtaskMenu(){
             scanf(" %d", &userChoice);
 
             switch(userChoice){
-            case 1: enqueue_task();
+            case 1: create_subtask();
                     break;
-            case 2: dequeue_task();
+            case 2: delete_subtask();
                     break;
-            case 3: display_task();
+            case 3: display_subtask();
                     break;
             case 4: return;
 
@@ -211,6 +214,26 @@ void display_subtaskMenu(){
 
 }
 
+//Function Definition: create_subtask
+void create_subtask(){
+
+
+
+}
+
+//Function Definition: delete_subtask
+void delete_subtask(){
+
+
+
+}
+
+//Function Definition: display_subtask
+void display_subtask(){
+
+
+
+}
 
 //Function Definition: adjust_num
 void adjust_num(){
