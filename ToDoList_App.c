@@ -355,14 +355,14 @@ void dequeue_task(){
 //Function Definition: adjust_num
 void adjust_num(){
 
-	int loop=1;
+    int loop=1;
 
-	ptrNew=front;
+    ptrNew=front;
 
-	while(ptrNew!=NULL){
+    while(ptrNew!=NULL){
         ptrNew->num=loop;
-		loop++;
-		ptrNew=ptrNew->ptrNext;}
+        loop++;
+        ptrNew=ptrNew->ptrNext;}
 
 }
 
