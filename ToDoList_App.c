@@ -40,6 +40,7 @@ void process_userAuthentication(struct User user);
 void enqueue_taskDefault();
 void enqueue_task();
 void dequeue_task();
+void update_task();
 void adjust_num();
 void display_task();
 void searchLinear_task();
@@ -202,6 +203,7 @@ int main(void){
         printf("\n[----------TO-DO-APP Menu----------]");
         printf("\nA - Create new task (enqueue)");
         printf("\nB - Delete task (dequeue)");
+        printf("\nU - Update task");
         printf("\nD - Display tasks list");
         printf("\nS - Search task");
         printf("\nT - Sort task by date");
@@ -216,6 +218,8 @@ int main(void){
         case 'A': enqueue_task();
                   break;
         case 'B': dequeue_task();
+                  break;
+        case 'U': update_task();
                   break;
         case 'D': display_task();
                   break;
@@ -347,6 +351,73 @@ void dequeue_task(){
         adjust_num();}
 
     display_task();
+}
+
+//Function Definition: update_task
+void update_task(){
+
+    int searchValue;
+
+    system("cls");
+
+    if(front==NULL){
+        printf("The task list is empty. Nothing to be updated!\n\n\n");}
+
+    else{
+
+        display_task();
+
+        printf("\nEnter task number: ");
+        scanf(" %d", &searchValue);
+
+        ptrCurrent=front;
+
+        while(ptrCurrent->ptrNext!=NULL){
+
+            if(ptrCurrent->num==searchValue){
+
+                printf("\nTask %d found!\n", ptrCurrent->num);
+
+                printf("\n\t Enter new task name          : ");
+                scanf(" %[^\n]s", &ptrCurrent->name);
+
+                printf("\t Enter new task category      : ");
+                scanf(" %[^\n]s", &ptrCurrent->details.category);
+
+                printf("\t Enter new date (dd/mm/yyyy)  : ");
+                scanf(" %d/%d/%d", &ptrCurrent->details.date.day, &ptrCurrent->details.date.month, &ptrCurrent->details.date.year);
+
+                printf("\t Enter new time (24-hour)     : ");
+                scanf(" %s", &ptrCurrent->details.time);
+
+                display_task();
+                return;}
+
+            else{
+                ptrCurrent=ptrCurrent->ptrNext;}}
+
+        if(ptrCurrent->num==searchValue){
+
+            printf("\nTask %d found!\n", ptrCurrent->num);
+
+            printf("\n\t Enter new task name          : ");
+            scanf(" %[^\n]s", &ptrCurrent->name);
+
+            printf("\t Enter new task category      : ");
+            scanf(" %[^\n]s", &ptrCurrent->details.category);
+
+            printf("\t Enter new date (dd/mm/yyyy)  : ");
+            scanf(" %d/%d/%d", &ptrCurrent->details.date.day, &ptrCurrent->details.date.month, &ptrCurrent->details.date.year);
+
+            printf("\t Enter new time (24-hour)     : ");
+            scanf(" %s", &ptrCurrent->details.time);
+
+            display_task();}
+
+        else{
+            printf("\nSorry, no match found!\n");}
+    }
+
 }
 
 //Function Definition: adjust_num
