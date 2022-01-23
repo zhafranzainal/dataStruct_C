@@ -46,6 +46,7 @@ void display_task();
 void searchLinear_task();
 void swap_task(struct Task *data1, struct Task *data2);
 void sort_taskByDate();
+void sort_taskByName();
 
 int main(void){
 
@@ -207,6 +208,7 @@ int main(void){
         printf("\nD - Display tasks list");
         printf("\nS - Search task");
         printf("\nT - Sort task by date");
+        printf("\nN - Sort task by task name");
         printf("\nX - Exit\n");
 
         printf("\nEnter choice: ");
@@ -226,6 +228,8 @@ int main(void){
         case 'S': searchLinear_task();
                   break;
         case 'T': sort_taskByDate();
+                  break;
+        case 'N': sort_taskByName();
                   break;
         case 'X': userExit=FALSE;
                   break;
@@ -569,6 +573,38 @@ void sort_taskByDate(){
                     }
                 }
             }
+
+            ptrFirst=ptrFirst->ptrNext;}
+
+        ptrSecond=ptrFirst;
+
+    }while(swapped==TRUE);
+
+    display_task();
+
+}
+
+//Function Definition: sort_taskByName
+void sort_taskByName(){
+
+    int swapped;
+    struct Task *ptrFirst;
+    struct Task *ptrSecond=NULL;
+
+    if(front==NULL){
+        system("cls");
+        printf("Empty task list for today. Nothing to be sorted!\n\n\n");
+        return;}
+
+    do{
+        swapped=FALSE;
+        ptrFirst=front;
+
+        while(ptrFirst->ptrNext!=ptrSecond){
+
+            if(strcmp(ptrFirst->name, ptrFirst->ptrNext->name) > 0){
+                swap_task(ptrFirst, ptrFirst->ptrNext);
+                swapped = TRUE;}
 
             ptrFirst=ptrFirst->ptrNext;}
 
