@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
+
+#define TRUE 1
+#define FALSE 0
 
 //Structure Declaration (Template)
 struct Customer{
@@ -16,15 +20,17 @@ struct Customer{
 
 //Function Declaration (Prototype)
 void add_custInfo();
-void determine_membership();
 void display_custInfo();
+void display_memberSilver();
+void display_memberVIP();
+void filter_custInfo();
 
 struct Customer *ptrHead, *ptrNew, *ptrCurrent;
 
 int main(void){
 
-    printf("\t\tWELCOME TO KEDAI KUCINGKU");
-    printf("\n\t\t*************************\n\n");
+    char userChoice;
+    int userExit=TRUE;
 
     ptrNew=(struct Customer *)malloc(sizeof(struct Customer));
     strcpy(ptrNew->name, "Rokiah Ahmad");
@@ -56,8 +62,34 @@ int main(void){
     ptrNew->point=120;
     add_custInfo();
 
-    determine_membership();
+    start:
+    printf("\t\tWELCOME TO KEDAI KUCINGKU");
+    printf("\n\t\t*************************\n\n");
+
     display_custInfo();
+
+    while(userExit==TRUE){
+
+        printf("\nD - Display all customer info");
+        printf("\nF - Filter based on membership types");
+        printf("\nX - Exit\n");
+
+        printf("\nEnter choice: ");
+        scanf(" %c", &userChoice);
+
+        userChoice=toupper(userChoice);
+
+        switch(userChoice){
+            case 'D':   system("cls");
+                        goto start;
+                        break;
+            case 'F':   filter_custInfo();
+                        break;
+            case 'X':   userExit=FALSE;
+                        break;
+
+            default:    system("cls");
+                        printf("Choose only one of the options!\n");}}
 
 return 0;
 }
@@ -80,26 +112,6 @@ void add_custInfo(){
 
 }
 
-//Function Definition: determine_membership
-void determine_membership(){
-
-    if(ptrHead!=NULL){
-
-        ptrCurrent=ptrHead;
-
-        do{
-            if(ptrCurrent->point<=1000){
-                strcpy(ptrCurrent->membership, "Silver");}
-
-            else{
-                strcpy(ptrCurrent->membership, "VIP");}
-
-            ptrCurrent=ptrCurrent->ptrNext;
-
-        }while(ptrCurrent!=NULL);}
-
-}
-
 //Function Definition: display_custInfo
 void display_custInfo(){
 
@@ -107,12 +119,19 @@ void display_custInfo(){
         printf("No customer yet.\n");}
 
     else{
-        printf("Name\t\t\t ID\t Accumulated Points\n");
-        printf("===================================================\n");
+        printf("Name\t\t\t ID\t Accumulated Points\t Membership\n");
+        printf("===================================================================\n");
         ptrCurrent=ptrHead;
 
         do{
-            printf("%-24s %-13s %d", ptrCurrent->name, ptrCurrent->numID, ptrCurrent->point);
+
+            if(ptrCurrent->point<=1000){
+                strcpy(ptrCurrent->membership, "Silver");}
+
+            else{
+                strcpy(ptrCurrent->membership, "VIP");}
+
+            printf("%-24s %-13s %-17d %s", ptrCurrent->name, ptrCurrent->numID, ptrCurrent->point, ptrCurrent->membership);
 
             printf("\n");
 
@@ -120,6 +139,60 @@ void display_custInfo(){
 
         }while(ptrCurrent!=NULL);}
 
-    printf("\n");
 }
+
+//Function Definition: display_memberSilver
+void display_memberSilver(){
+
+    system("cls");
+
+    if(ptrHead==NULL){
+        printf("No customer yet.\n");}
+
+    else{
+        printf("Name\t\t\t ID\t Accumulated Points\t Membership\n");
+        printf("===================================================================\n");
+        ptrCurrent=ptrHead;
+
+        do{
+            if(strcmp(ptrCurrent->membership, "Silver")==0){
+                printf("%-24s %-13s %-17d %s", ptrCurrent->name, ptrCurrent->numID, ptrCurrent->point, ptrCurrent->membership);
+                printf("\n");}
+
+                ptrCurrent=ptrCurrent->ptrNext;
+
+        }while(ptrCurrent!=NULL);}
+
+}
+
+//Function Definition: display_memberVIP
+void display_memberVIP(){
+
+    if(ptrHead==NULL){
+        printf("No customer yet.\n");}
+
+    else{
+        printf("\nName\t\t\t ID\t Accumulated Points\t Membership\n");
+        printf("===================================================================\n");
+        ptrCurrent=ptrHead;
+
+        do{
+            if(strcmp(ptrCurrent->membership, "VIP")==0){
+                printf("%-24s %-13s %-17d %s", ptrCurrent->name, ptrCurrent->numID, ptrCurrent->point, ptrCurrent->membership);
+                printf("\n");}
+
+                ptrCurrent=ptrCurrent->ptrNext;
+
+        }while(ptrCurrent!=NULL);}
+
+}
+
+//Function Definition: filter_custInfo
+void filter_custInfo(){
+
+    display_memberSilver();
+    display_memberVIP();
+
+}
+
 
