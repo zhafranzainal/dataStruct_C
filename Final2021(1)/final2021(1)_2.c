@@ -1,15 +1,17 @@
 #include <stdio.h>
 
 //Function Declaration (Prototype)
-void sort_bubble(int num[],int totalNum);
+void sort_bubbleDesc(int num[], int totalNum, int max);
+void sort_bubbleAsc(int num[], int totalNum, int max);
 
 int main(void){
 
-    int totalNum, loop;
+    int totalNum, max, loop;
 
     printf("Enter list size: ");
     scanf(" %d", &totalNum);
 
+    max=totalNum;
     int num[totalNum];
 
     printf("\n");
@@ -19,12 +21,14 @@ int main(void){
         scanf(" %d", &num[loop]);}
 
     //Sorting process
-    printf("\nSorting process:-\n\n");;
+    printf("\nSorting process:-\n\n");
 
-    sort_bubble(num, totalNum);
+    sort_bubbleDesc(num, totalNum, max);
+    printf("\n");
+    sort_bubbleAsc(num, totalNum, max);
 
     //Sorted list
-    printf("\nSorted list: ");
+    printf("\n Sorted list:");
     for(loop=0;loop<totalNum;loop++){
         printf(" %d", num[loop]);}
 
@@ -33,43 +37,50 @@ int main(void){
 return 0;
 }
 
-void sort_bubble(int num[],int totalNum){
+//Function Definition: sort_bubbleDesc
+void sort_bubbleDesc(int num[], int totalNum, int max){
 
-    int temp, loop, max=totalNum;
+    int temp, loop;
 
-    while(max>1){
-        max--;
+    while(totalNum>1){
+        totalNum--;
 
-        for(loop=0;loop<max;loop++){
+        for(loop=0;loop<totalNum;loop++){
             if(num[loop]<num[loop+1]){
                 temp=num[loop];
                 num[loop]=num[loop+1];
                 num[loop+1]=temp;}
         }
 
-        for(loop=0;loop<totalNum;loop++){
+        for(loop=0;loop<max;loop++){
             printf(" %d", num[loop]);}
 
         printf("\n");
+
     }
 
-    printf("\n");
-    max=totalNum;
+}
 
-    while(max>1){
-        max--;
+//Function Definition: sort_bubbleAsc
+void sort_bubbleAsc(int num[], int totalNum, int max){
 
-        for(loop=0;loop<max;loop++){
+    int temp, loop;
+
+    while(totalNum>1){
+        totalNum--;
+
+        for(loop=0;loop<totalNum;loop++){
             if(num[loop]>num[loop+1]){
                 temp=num[loop];
                 num[loop]=num[loop+1];
                 num[loop+1]=temp;}
         }
 
-        for(loop=0;loop<totalNum;loop++){
+        for(loop=0;loop<max;loop++){
             printf(" %d", num[loop]);}
 
         printf("\n");
+
     }
 
 }
