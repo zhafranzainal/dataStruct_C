@@ -24,6 +24,8 @@ void display_riverState(struct River *head);
 
 int main(void){
 
+    ptrHead=NULL;
+
     ptrNew=(struct River *)malloc(sizeof(struct River));
     strcpy(ptrNew->state, "Kelantan");
     strcpy(ptrNew->riverName, "Sg. Alor B");
