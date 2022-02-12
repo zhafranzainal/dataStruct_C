@@ -14,11 +14,13 @@ struct River{
     //Pointer (Link) Field
     struct River *ptrNext;};
 
-struct River *ptrHead, *ptrNew, *ptrCurrent;
+struct River *ptrHead, *ptrNew, *ptrCurrent, *ptrCopy, *kelantan, *pahang, *terengganu;
 
 //Function Declaration (Prototype)
 void insert_riverInfo();
 void display_riverInfo();
+void copy_riverInfo();
+void display_riverState(struct River *head);
 
 int main(void){
 
@@ -143,6 +145,7 @@ int main(void){
     insert_riverInfo();
 
     display_riverInfo();
+    copy_riverInfo();
 
 return 0;
 }
@@ -186,6 +189,103 @@ void display_riverInfo(){
 
             else{
                 strcpy(ptrCurrent->category, "C");}
+
+            printf("%-14s %-25s %-10d %s", ptrCurrent->state, ptrCurrent->riverName, ptrCurrent->waterQualityIndex, ptrCurrent->category);
+
+            printf("\n");
+
+            ptrCurrent=ptrCurrent->ptrNext;
+
+        }while(ptrCurrent!=NULL);}
+
+}
+
+//Function Definition: copy_riverInfo
+void copy_riverInfo(){
+
+    kelantan=NULL;
+    pahang=NULL;
+    terengganu=NULL;
+
+    if(ptrHead==NULL){
+        printf("No river registered in the system yet.\n");}
+
+    else{
+
+        ptrCurrent=ptrHead;
+
+        do{
+
+            if(strcmp(ptrCurrent->state, "Kelantan")==0){
+
+                ptrCopy=(struct River *)malloc(sizeof(struct River));
+                strcpy(ptrCopy->state, ptrCurrent->state);
+                strcpy(ptrCopy->riverName, ptrCurrent->riverName);
+                ptrCopy->waterQualityIndex=ptrCurrent->waterQualityIndex;
+                strcpy(ptrCopy->category, ptrCurrent->category);
+
+                if(kelantan==NULL){
+                    ptrCopy->ptrNext=NULL;
+                    kelantan=ptrCopy;}
+                else{
+                    ptrCopy->ptrNext=kelantan;
+                    kelantan=ptrCopy;}
+            }
+
+            else if(strcmp(ptrCurrent->state, "Pahang")==0){
+
+                ptrCopy=(struct River *)malloc(sizeof(struct River));
+                strcpy(ptrCopy->state, ptrCurrent->state);
+                strcpy(ptrCopy->riverName, ptrCurrent->riverName);
+                ptrCopy->waterQualityIndex=ptrCurrent->waterQualityIndex;
+                strcpy(ptrCopy->category, ptrCurrent->category);
+
+                if(pahang==NULL){
+                    ptrCopy->ptrNext=NULL;
+                    pahang=ptrCopy;}
+                else{
+                    ptrCopy->ptrNext=pahang;
+                    pahang=ptrCopy;}
+            }
+
+            else{
+
+                ptrCopy=(struct River *)malloc(sizeof(struct River));
+                strcpy(ptrCopy->state, ptrCurrent->state);
+                strcpy(ptrCopy->riverName, ptrCurrent->riverName);
+                ptrCopy->waterQualityIndex=ptrCurrent->waterQualityIndex;
+                strcpy(ptrCopy->category, ptrCurrent->category);
+
+                if(terengganu==NULL){
+                    ptrCopy->ptrNext=NULL;
+                    terengganu=ptrCopy;}
+                else{
+                    ptrCopy->ptrNext=terengganu;
+                    terengganu=ptrCopy;}
+            }
+
+            ptrCurrent=ptrCurrent->ptrNext;
+
+        }while(ptrCurrent!=NULL);}
+
+    display_riverState(kelantan);
+    display_riverState(pahang);
+    display_riverState(terengganu);
+
+}
+
+//Function Definition: display_riverState
+void display_riverState(struct River *head){
+
+    if(head==NULL){
+        printf("\nNo river registered in the system yet.\n");}
+
+    else{
+        printf("\nState\t\t River\t\t\t WQI\t Category\n");
+        printf("=========================================================\n");
+        ptrCurrent=head;
+
+        do{
 
             printf("%-14s %-25s %-10d %s", ptrCurrent->state, ptrCurrent->riverName, ptrCurrent->waterQualityIndex, ptrCurrent->category);
 
