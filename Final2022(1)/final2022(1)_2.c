@@ -25,7 +25,7 @@ int main(void){
 
     int cases[]={739803, 451509, 601643, 138080, 220315, 66841, 117173, 123498, 115582, 86869};
 
-    int loop, totalNum=10;
+    int loop, totalNum=sizeof(cases)/sizeof(cases[0]);
 
     printf("BEFORE SORTING:\n\n");
 
