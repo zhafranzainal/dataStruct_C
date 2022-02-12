@@ -276,17 +276,19 @@ void copy_riverInfo(){
 //Function Definition: display_riverState
 void display_riverState(struct River *head){
 
+    int num=1;
+
     if(head==NULL){
         printf("\nNo river registered in the system yet.\n");}
 
     else{
-        printf("\nState\t\t River\t\t\t WQI\t Category\n");
-        printf("=========================================================\n");
+        printf("\n #  State\t River\t\t\t WQI\t Category\n");
+        printf(" ========================================================\n");
         ptrCurrent=head;
 
         do{
 
-            printf("%-14s %-25s %-10d %s", ptrCurrent->state, ptrCurrent->riverName, ptrCurrent->waterQualityIndex, ptrCurrent->category);
+            printf(" %-2d %-12s %-23s %-10d %s", num++, ptrCurrent->state, ptrCurrent->riverName, ptrCurrent->waterQualityIndex, ptrCurrent->category);
 
             printf("\n");
 
