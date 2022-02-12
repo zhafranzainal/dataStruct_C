@@ -216,9 +216,10 @@ void copy_riverInfo(){
 
         do{
 
+            ptrCopy=(struct River *)malloc(sizeof(struct River));
+
             if(strcmp(ptrCurrent->state, "Kelantan")==0){
 
-                ptrCopy=(struct River *)malloc(sizeof(struct River));
                 strcpy(ptrCopy->state, ptrCurrent->state);
                 strcpy(ptrCopy->riverName, ptrCurrent->riverName);
                 ptrCopy->waterQualityIndex=ptrCurrent->waterQualityIndex;
@@ -234,7 +235,6 @@ void copy_riverInfo(){
 
             else if(strcmp(ptrCurrent->state, "Pahang")==0){
 
-                ptrCopy=(struct River *)malloc(sizeof(struct River));
                 strcpy(ptrCopy->state, ptrCurrent->state);
                 strcpy(ptrCopy->riverName, ptrCurrent->riverName);
                 ptrCopy->waterQualityIndex=ptrCurrent->waterQualityIndex;
@@ -250,7 +250,6 @@ void copy_riverInfo(){
 
             else{
 
-                ptrCopy=(struct River *)malloc(sizeof(struct River));
                 strcpy(ptrCopy->state, ptrCurrent->state);
                 strcpy(ptrCopy->riverName, ptrCurrent->riverName);
                 ptrCopy->waterQualityIndex=ptrCurrent->waterQualityIndex;
