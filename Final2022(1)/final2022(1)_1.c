@@ -20,6 +20,7 @@ struct River *ptrHead, *ptrNew, *ptrCurrent, *ptrCopy, *kelantan, *pahang, *tere
 void insert_riverInfo();
 void display_riverInfo();
 void copy_riverInfo();
+void insert_riverState(struct River **head);
 void display_riverState(struct River *head);
 
 int main(void){
@@ -218,52 +219,12 @@ void copy_riverInfo(){
 
         do{
 
-            ptrCopy=(struct River *)malloc(sizeof(struct River));
-
             if(strcmp(ptrCurrent->state, "Kelantan")==0){
-
-                strcpy(ptrCopy->state, ptrCurrent->state);
-                strcpy(ptrCopy->riverName, ptrCurrent->riverName);
-                ptrCopy->waterQualityIndex=ptrCurrent->waterQualityIndex;
-                strcpy(ptrCopy->category, ptrCurrent->category);
-
-                if(kelantan==NULL){
-                    ptrCopy->ptrNext=NULL;
-                    kelantan=ptrCopy;}
-                else{
-                    ptrCopy->ptrNext=kelantan;
-                    kelantan=ptrCopy;}
-            }
-
+                insert_riverState(&kelantan);}
             else if(strcmp(ptrCurrent->state, "Pahang")==0){
-
-                strcpy(ptrCopy->state, ptrCurrent->state);
-                strcpy(ptrCopy->riverName, ptrCurrent->riverName);
-                ptrCopy->waterQualityIndex=ptrCurrent->waterQualityIndex;
-                strcpy(ptrCopy->category, ptrCurrent->category);
-
-                if(pahang==NULL){
-                    ptrCopy->ptrNext=NULL;
-                    pahang=ptrCopy;}
-                else{
-                    ptrCopy->ptrNext=pahang;
-                    pahang=ptrCopy;}
-            }
-
+                insert_riverState(&pahang);}
             else{
-
-                strcpy(ptrCopy->state, ptrCurrent->state);
-                strcpy(ptrCopy->riverName, ptrCurrent->riverName);
-                ptrCopy->waterQualityIndex=ptrCurrent->waterQualityIndex;
-                strcpy(ptrCopy->category, ptrCurrent->category);
-
-                if(terengganu==NULL){
-                    ptrCopy->ptrNext=NULL;
-                    terengganu=ptrCopy;}
-                else{
-                    ptrCopy->ptrNext=terengganu;
-                    terengganu=ptrCopy;}
-            }
+                insert_riverState(&terengganu);}
 
             ptrCurrent=ptrCurrent->ptrNext;
 
@@ -272,6 +233,25 @@ void copy_riverInfo(){
     display_riverState(kelantan);
     display_riverState(pahang);
     display_riverState(terengganu);
+
+}
+
+//Function Definition: insert_riverState
+void insert_riverState(struct River **head){
+
+    ptrCopy=(struct River *)malloc(sizeof(struct River));
+
+    strcpy(ptrCopy->state, ptrCurrent->state);
+    strcpy(ptrCopy->riverName, ptrCurrent->riverName);
+    ptrCopy->waterQualityIndex=ptrCurrent->waterQualityIndex;
+    strcpy(ptrCopy->category, ptrCurrent->category);
+
+    if(*head==NULL){
+        ptrCopy->ptrNext=NULL;
+        *head=ptrCopy;}
+    else{
+        ptrCopy->ptrNext=*head;
+        *head=ptrCopy;}
 
 }
 
